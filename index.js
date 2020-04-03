@@ -1,8 +1,11 @@
 // create connection
 const express = require("express"); 
 const mongoose = require("mongoose"); //mongoose takes care of the connection to the database
-if (process.env.NODE_ENV !== 'production') require('dotenv').config(); // require and configure dotenv
+const path = require('path');
 
+const config = require('./config/config');
+
+if (process.env.NODE_ENV !== 'production') require('dotenv').config(); // require and configure dotenv
 
 // call express() to start the server 
 const app = express(); 
@@ -15,7 +18,7 @@ app.set("view options", { filename: true });
 mongoose.set('useFindAndModify', false);
 
 // open the public directory
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(path.join(__dirname + '/public')));
 
 // middleware för att tolka, to be able to take in form inputs
 app.use(express.urlencoded({ extended: true }));
@@ -43,7 +46,7 @@ app.use(todosSortRouter);
 app.use(aboutRouter);
 
 // lyssna efter en port eller vår dynamiska port som finns på vår localHost
-const port = process.env.PORT || 8000; 
+const port = config.PORT || 8000;
 
 // options 
 const options = {
@@ -52,11 +55,8 @@ const options = {
 };
 
 // declare the URI (connection to database, parsed)
-const uri = process.env.DB_URI;
+const uri = config.DB_URI;
 
-mongoose
-    .connect(uri, options)
-    .then( ()=> {
-        app.listen(port); 
-        console.log(`Listening on port ${port}`); 
-    });
+mongoose.connect(uri, options).then( ()=> { 
+    app.listen(port, () => console.log(`Listening on port ${port}`)); 
+});
