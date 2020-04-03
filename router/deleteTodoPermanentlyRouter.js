@@ -17,7 +17,7 @@ router.post("/deletetodopermanently/:id", async (req, res) => {
 
 router.post("/deletealltodopermanently", async (req, res) => {
 
-    const deletedalltodopermanently = await Todo.remove({ status: "deleted" })
+    await Todo.remove({ status: "deleted" })
         .then(console.log("all todos deleted permanently"))
         .catch(err => console.log(err));
 

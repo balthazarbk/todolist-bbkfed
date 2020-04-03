@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>To-Do List</title>
-    <%- include('link'); %>
+    <%- include('link.ejs'); %>
 </head>
 
 <body>
-    <%- include('navigation'); %>
+    <%- include('navigation.ejs'); %>
     <header class="ms-Grid-row">
         <h1 class="ms-Grid-col ms-sm12">To-Do List</h1>
     </header>
@@ -40,7 +40,7 @@
         <div class="ms-Grid-col ms-sm12">
             <% todos.forEach( (todo) => { %>
             <% if (todo.status == "undone") { %>
-            <%- include('todolist', { todo }); %>
+            <%- include('todolist.ejs', { todo }); %>
             <div class="options">
                 <form action="deletetodo/<%= todo._id %>" method="POST"><button type="submit">Delete</button></form>
                 <form action="donetodo/<%= todo._id %>" method="POST"><button type="submit">Done</button></form>
@@ -62,7 +62,7 @@
         <div class="ms-Grid-col ms-sm12">
             <% todos.forEach( (todo) => { %>
             <% if (todo.status == "done") { %>
-            <%- include('todolist', { todo }); %>
+            <%- include('todolist.ejs', { todo }); %>
             <div class="options">
                 <form action="deletetodo/<%= todo._id %>" method="POST"><button type="submit">Delete</button></form>
                 <form action="archivetodo/<%= todo._id %>" method="POST"><button type="submit">Archive</button></form>
@@ -72,7 +72,7 @@
         </div>
     </section>
     <% } %>
-    <%- include('footer'); %>
+    <%- include('footer.ejs'); %>
 
 </body>
 

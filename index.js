@@ -12,10 +12,7 @@ const app = express();
 
 // ejs
 app.set('view engine', 'ejs');
-app.set("view options", { filename: true });
-
-// mongoose options
-mongoose.set('useFindAndModify', false);
+app.set('view options', { filename: true });
 
 // open the public directory
 app.use(express.static(path.join(__dirname + '/public')));
@@ -51,7 +48,8 @@ const port = config.PORT || 8000;
 // options 
 const options = {
      useUnifiedTopology: true, 
-     useNewUrlParser: true 
+     useNewUrlParser: true,
+     useFindAndModify: false 
 };
 
 // declare the URI (connection to database, parsed)
