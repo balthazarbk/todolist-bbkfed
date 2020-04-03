@@ -1,0 +1,102 @@
+@import 'node_modules/office-ui-fabric-core/src/sass/_References.scss'; // Import all mixins and variables.
+
+body {
+    font-family: $ms-font-family-west-european;
+    @include ms-fontSize-18;
+    background-color: $ms-color-neutralLighterAlt;
+}
+
+.ms-Grid-row {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+#first-row {
+    margin-top: 0px;
+}
+#last-row {
+    margin-bottom: 0px;
+}
+
+nav, header, section, footer {
+    @include ms-depth-4;
+    padding: .5rem 0;
+    background-color: $ms-color-white;
+}
+
+nav {
+    a {
+        text-align: center;
+        i { 
+            @include ms-fontSize-32;
+            vertical-align: middle;
+        }
+    }
+}
+
+header {
+    h1 {
+        @include ms-fontSize-28;
+        @include ms-fontWeight-bold;
+        margin: 0 0;
+    }
+}
+
+#create-form {
+    #col-add-button {
+        text-align: center;
+        // padding-top : .2rem;
+        padding-bottom: 0;
+        button {
+            padding-top: .3rem;
+            padding-bottom: 0;
+            #add-button {
+                @include ms-fontSize-32;
+                @include ms-fontWeight-bold;
+            }
+        }
+    }
+}
+
+.options form, li form {
+    display: inline;
+}
+
+h3 {
+    @include ms-fontSize-24;
+    @include ms-fontWeight-semibold;
+    margin: 0 0;
+}
+
+@mixin to-do-lists {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#to-do {
+        #to-do-list {
+            @include to-do-lists;
+            @include ms-motion-fadeIn;
+            margin-bottom: 0;
+        }
+        #to-do-body {
+            @include ms-fontWeight-semibold;
+        }
+        .tag {
+            @include ms-fontSize-14;
+            border: .5px dotted darkgrey;
+            border-radius: 4px;
+            padding: 0px 4px;
+            margin-right: 6px;
+        }
+        #to-do-date {
+            @include ms-fontSize-14;
+        }
+}
+
+footer {
+    p {
+        margin: 0 0;
+        @include ms-fontSize-16;
+    }
+}

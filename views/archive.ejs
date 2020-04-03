@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To-Do List: Archive</title>
+    <%- include('link'); %>
+</head>
+<body>
+    <%- include('navigation'); %>
+    <header class="ms-Grid-row">
+        <h1 class="ms-Grid-col ms-sm12">Archive</h1>
+    </header>
+    <hr />
+    <% todos.forEach( (todo) => { %>
+            <%- include('todolist', { todo }); %>
+            <div class="options">
+                <form action="deletearchivedtodo/<%= todo._id %>" method="POST"><button type="submit">Delete</button></form>
+                <form action="restorearchivedtodo/<%= todo._id %>" method="POST"><button type="submit">Restore</button></form>
+            </div>
+    <% }); %>
+    <% if (todos.length == 0) { %>
+        <p>There are no archived todos.</p>
+    <% } %>
+    <hr />
+    <%- include('footer'); %>
+
+</body>
+</html>

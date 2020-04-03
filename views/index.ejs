@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To-Do List</title>
+    <%- include('link'); %>
+</head>
+
+<body>
+    <%- include('navigation'); %>
+    <header class="ms-Grid-row">
+        <h1 class="ms-Grid-col ms-sm12">To-Do List</h1>
+    </header>
+    <section id="create-form" class="ms-Grid-row">
+        <form action="/" method="POST">
+            <div class="ms-Grid-col ms-sm12">
+                <label>Todo: <input type="text" name="body" id="todo" placeholder="A todo" /></label><br />
+                <label>Tag(s): <input type="text" name="tags" id="tags" placeholder="First, Second, …" /></label><br />
+            </div>
+            <div class="ms-Grid-col ms-sm12" id="col-add-button">
+                    <button type="submit">
+                        <i class="ms-Icon ms-Icon--Add" id="add-button" aria-hidden="true"></i>
+                    </button>
+            </div>
+        </form>
+    </section>
+    <section id="sort-bar" class="ms-Grid-row">
+        <form action="sort" method="GET">
+            <div class="ms-Grid-col ms-sm12">
+                <button type="submit" name="date" value="1">Date ↑</button>&nbsp;<button type="submit" name="date"
+                    value="-1">Date ↓</button>
+            </div>
+        </form>
+    </section>
+    <section id="to-do" class="ms-Grid-row">
+        <h3 class="ms-Grid-col ms-sm12">To do</h3>
+        <div class="ms-Grid-col ms-sm12">
+            <% todos.forEach( (todo) => { %>
+            <% if (todo.status == "undone") { %>
+            <%- include('todolist', { todo }); %>
+            <div class="options">
+                <form action="deletetodo/<%= todo._id %>" method="POST"><button type="submit">Delete</button></form>
+                <form action="donetodo/<%= todo._id %>" method="POST"><button type="submit">Done</button></form>
+                <form action="edittodo/<%= todo._id %>" method="POST">
+                    <% if (!todo.edit) { %>
+                    <button type="submit">Edit</button>
+                    <% } else { %>
+                    <button type="submit" disabled>Edit</button>
+                    <% } %>
+                </form>
+            </div>
+            <% } %>
+            <% }); %>
+        </div>
+    </section>
+    <% if (!sorted) { %>
+    <section id="done" class="ms-Grid-row">
+        <h3 id="done-header" class="ms-Grid-col ms-sm12">Done</h3>
+        <div class="ms-Grid-col ms-sm12">
+            <% todos.forEach( (todo) => { %>
+            <% if (todo.status == "done") { %>
+            <%- include('todolist', { todo }); %>
+            <div class="options">
+                <form action="deletetodo/<%= todo._id %>" method="POST"><button type="submit">Delete</button></form>
+                <form action="archivetodo/<%= todo._id %>" method="POST"><button type="submit">Archive</button></form>
+            </div>
+            <% } %>
+            <% }); %>
+        </div>
+    </section>
+    <% } %>
+    <%- include('footer'); %>
+
+</body>
+
+</html>

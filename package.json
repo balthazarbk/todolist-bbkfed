@@ -1,0 +1,30 @@
+{
+  "name": "express-router-mongoose-03",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "12.14.1"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "css": "node-sass src/main.scss -o public/css",
+    "css:watch": "npm run css && node-sass src/main.scss -wo public/css",
+    "cypress:open": "cypress open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.8.10"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "cypress": "^4.0.1",
+    "node-sass": "^4.13.1",
+    "nodemon": "^2.0.2"
+  }
+}

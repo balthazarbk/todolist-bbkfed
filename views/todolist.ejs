@@ -1,0 +1,11 @@
+<ul id="to-do-list">
+    <% if (!todo.edit) { %>
+        <li id="to-do-body"><%= todo.body %></li>
+    <% } else { %>
+        <li id="to-do-body"><form action="edittodo/confirmed/<%= todo._id %>" method="POST"><input type="text" name="body" id="todotoedit" placeholder="<%= todo.body %>"/><button type="submit">Confirm</button></form></li>
+    <% } %>
+    <li>
+        <% todo.tags.forEach( (tag) => { %><% if (tag) { %><span class="tag"><%= tag %></span><% } else { %><span>–</span><% } %><% }); %>
+    </li>
+    <li id="to-do-date">Date: <%= todo.date.toDateString() %>, <%= todo.date.toLocaleTimeString() %></li>
+</ul>
