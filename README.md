@@ -1,5 +1,5 @@
 ## todolist-bbkfed
-### Todolist app / student project about full stack development
+### Todolist app / student project about full stack development / spring 2020
 
 - following MVC software design
 - built with NodeJS as runtime environment
