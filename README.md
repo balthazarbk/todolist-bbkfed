@@ -1,3 +1,9 @@
-# todolist-bbkfed
+## todolist-bbkfed
+### Full stack development study project
 
-… is a student project, about deploying Todolist app to Heroku.
+- following MVC software design
+- built with NodeJS as runtime environment
+- using Mongo DB together with Mongoose
+- Test-Driven Development with Cypress
+- Templating and styling: EJS, Office UI Fabric JS, SCSS
+- Ready for deployment on Heroku
